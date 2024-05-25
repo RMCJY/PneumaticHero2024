@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "DAC.C": "cpp",
+        "gpio.h": "c",
+        "main.h": "c"
+    }
+}
