@@ -1,0 +1,1206 @@
+{
+	"artifacts" : 
+	[
+		{
+			"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/build/Shooter.elf"
+		}
+	],
+	"backtrace" : 1,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_executable",
+			"target_link_libraries",
+			"add_compile_options",
+			"add_definitions",
+			"target_include_directories"
+		],
+		"files" : 
+		[
+			"CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 111,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 119,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 120,
+				"parent" : 0
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 49,
+				"parent" : 0
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 64,
+				"parent" : 0
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 64,
+				"parent" : 0
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 73,
+				"parent" : 0
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 64,
+				"parent" : 0
+			},
+			{
+				"command" : 4,
+				"file" : 0,
+				"line" : 115,
+				"parent" : 0
+			},
+			{
+				"command" : 4,
+				"file" : 0,
+				"line" : 116,
+				"parent" : 0
+			}
+		]
+	},
+	"compileGroups" : 
+	[
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : " -mcpu=cortex-m3  -Wall -Wextra -Wpedantic -fdata-sections -ffunction-sections -O0 -g3 -mcpu=cortex-m3  -Wall -Wextra -Wpedantic -fdata-sections -ffunction-sections -O0 -g3 -Wno-unused-parameter -Wno-missing-field-initializers -Wno-pedantic -Wno-unknown-pragmas -g -std=gnu11"
+				}
+			],
+			"defines" : 
+			[
+				{
+					"backtrace" : 5,
+					"define" : "DEBUG"
+				},
+				{
+					"backtrace" : 6,
+					"define" : "STM32F103xE"
+				},
+				{
+					"backtrace" : 7,
+					"define" : "STM32_HAL_FILENAME=\"stm32f1xx_hal.h\""
+				},
+				{
+					"backtrace" : 8,
+					"define" : "USE_HAL_DRIVER"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 9,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/Core"
+				},
+				{
+					"backtrace" : 9,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/Core/Inc"
+				},
+				{
+					"backtrace" : 9,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/Core/Src"
+				},
+				{
+					"backtrace" : 9,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/Drivers"
+				},
+				{
+					"backtrace" : 9,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/Drivers/CMSIS"
+				},
+				{
+					"backtrace" : 9,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/Drivers/CMSIS/Device"
+				},
+				{
+					"backtrace" : 9,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/Drivers/CMSIS/Device/ST"
+				},
+				{
+					"backtrace" : 9,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/Drivers/CMSIS/Device/ST/STM32F1xx"
+				},
+				{
+					"backtrace" : 9,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/Drivers/CMSIS/Device/ST/STM32F1xx/Include"
+				},
+				{
+					"backtrace" : 9,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/Drivers/CMSIS/Device/ST/STM32F1xx/Source"
+				},
+				{
+					"backtrace" : 9,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/Drivers/CMSIS/Device/ST/STM32F1xx/Source/Templates"
+				},
+				{
+					"backtrace" : 9,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/Drivers/CMSIS/Include"
+				},
+				{
+					"backtrace" : 9,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/Drivers/STM32F1xx_HAL_Driver"
+				},
+				{
+					"backtrace" : 9,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/Drivers/STM32F1xx_HAL_Driver/Inc"
+				},
+				{
+					"backtrace" : 9,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/Drivers/STM32F1xx_HAL_Driver/Inc/Legacy"
+				},
+				{
+					"backtrace" : 9,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/Drivers/STM32F1xx_HAL_Driver/Src"
+				},
+				{
+					"backtrace" : 9,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/Task"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/Third_Party/Eigen3/Eigen/src/Cholesky"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/Third_Party/Eigen3/Eigen/src/CholmodSupport"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/Third_Party/Eigen3/Eigen/src/Core"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/Third_Party/Eigen3/Eigen/src/Core/arch/AVX"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/Third_Party/Eigen3/Eigen/src/Core/arch/AVX512"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/Third_Party/Eigen3/Eigen/src/Core/arch/AltiVec"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/Third_Party/Eigen3/Eigen/src/Core/arch/CUDA"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/Third_Party/Eigen3/Eigen/src/Core/arch/Default"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/Third_Party/Eigen3/Eigen/src/Core/arch/GPU"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/Third_Party/Eigen3/Eigen/src/Core/arch/HIP/hcc"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/Third_Party/Eigen3/Eigen/src/Core/arch/MSA"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/Third_Party/Eigen3/Eigen/src/Core/arch/NEON"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/Third_Party/Eigen3/Eigen/src/Core/arch/SSE"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/Third_Party/Eigen3/Eigen/src/Core/arch/SVE"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/Third_Party/Eigen3/Eigen/src/Core/arch/SYCL"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/Third_Party/Eigen3/Eigen/src/Core/arch/ZVector"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/Third_Party/Eigen3/Eigen/src/Core/functors"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/Third_Party/Eigen3/Eigen/src/Core/products"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/Third_Party/Eigen3/Eigen/src/Core/util"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/Third_Party/Eigen3/Eigen/src/Eigenvalues"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/Third_Party/Eigen3/Eigen/src/Geometry"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/Third_Party/Eigen3/Eigen/src/Geometry/arch"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/Third_Party/Eigen3/Eigen/src/Householder"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/Third_Party/Eigen3/Eigen/src/IterativeLinearSolvers"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/Third_Party/Eigen3/Eigen/src/Jacobi"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/Third_Party/Eigen3/Eigen/src/KLUSupport"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/Third_Party/Eigen3/Eigen/src/LU"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/Third_Party/Eigen3/Eigen/src/LU/arch"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/Third_Party/Eigen3/Eigen/src/MetisSupport"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/Third_Party/Eigen3/Eigen/src/OrderingMethods"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/Third_Party/Eigen3/Eigen/src/PaStiXSupport"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/Third_Party/Eigen3/Eigen/src/PardisoSupport"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/Third_Party/Eigen3/Eigen/src/QR"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/Third_Party/Eigen3/Eigen/src/SPQRSupport"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/Third_Party/Eigen3/Eigen/src/SVD"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/Third_Party/Eigen3/Eigen/src/SparseCholesky"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/Third_Party/Eigen3/Eigen/src/SparseCore"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/Third_Party/Eigen3/Eigen/src/SparseLU"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/Third_Party/Eigen3/Eigen/src/SparseQR"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/Third_Party/Eigen3/Eigen/src/StlSupport"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/Third_Party/Eigen3/Eigen/src/SuperLUSupport"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/Third_Party/Eigen3/Eigen/src/UmfPackSupport"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/Third_Party/Eigen3/Eigen/src/misc"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/Third_Party/Eigen3/Eigen/src/plugins"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/bsp/stm32_hal"
+				},
+				{
+					"backtrace" : 10,
+					"isSystem" : true,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/Third_Party/Dsp/CMSIS-DSP/Include"
+				},
+				{
+					"backtrace" : 10,
+					"isSystem" : true,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/algorithms/ahrs/inc"
+				},
+				{
+					"backtrace" : 10,
+					"isSystem" : true,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/algorithms/controller/base"
+				},
+				{
+					"backtrace" : 10,
+					"isSystem" : true,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/algorithms/controller/pid/inc"
+				},
+				{
+					"backtrace" : 10,
+					"isSystem" : true,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/algorithms/filter/inc"
+				},
+				{
+					"backtrace" : 10,
+					"isSystem" : true,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/algorithms/fsm/inc"
+				},
+				{
+					"backtrace" : 10,
+					"isSystem" : true,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/algorithms/ik_solver/chassis/inc"
+				},
+				{
+					"backtrace" : 10,
+					"isSystem" : true,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/algorithms/observer/inc"
+				},
+				{
+					"backtrace" : 10,
+					"isSystem" : true,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/bsp/tick"
+				},
+				{
+					"backtrace" : 10,
+					"isSystem" : true,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/devices/buzzer/inc"
+				},
+				{
+					"backtrace" : 10,
+					"isSystem" : true,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/devices/imu/inc"
+				},
+				{
+					"backtrace" : 10,
+					"isSystem" : true,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/devices/laser/inc"
+				},
+				{
+					"backtrace" : 10,
+					"isSystem" : true,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/devices/motor/inc"
+				},
+				{
+					"backtrace" : 10,
+					"isSystem" : true,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/devices/referee/inc"
+				},
+				{
+					"backtrace" : 10,
+					"isSystem" : true,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/devices/remote_control/inc"
+				},
+				{
+					"backtrace" : 10,
+					"isSystem" : true,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/devices/servo/inc"
+				},
+				{
+					"backtrace" : 10,
+					"isSystem" : true,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/tools/inc"
+				}
+			],
+			"language" : "C",
+			"languageStandard" : 
+			{
+				"backtraces" : 
+				[
+					1
+				],
+				"standard" : "11"
+			},
+			"sourceIndexes" : 
+			[
+				9,
+				10,
+				11,
+				12,
+				13,
+				14,
+				15,
+				16,
+				17,
+				18,
+				19,
+				20,
+				21,
+				23
+			]
+		},
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : " -mcpu=cortex-m3  -Wall -Wextra -Wpedantic -fdata-sections -ffunction-sections -O0 -g3 -mcpu=cortex-m3  -Wall -Wextra -Wpedantic -fdata-sections -ffunction-sections -O0 -g3 -x assembler-with-cpp -MMD -MP -g"
+				},
+				{
+					"backtrace" : 4,
+					"fragment" : "-x"
+				},
+				{
+					"backtrace" : 4,
+					"fragment" : "assembler-with-cpp"
+				}
+			],
+			"defines" : 
+			[
+				{
+					"backtrace" : 5,
+					"define" : "DEBUG"
+				},
+				{
+					"backtrace" : 6,
+					"define" : "STM32F103xE"
+				},
+				{
+					"backtrace" : 7,
+					"define" : "STM32_HAL_FILENAME=\"stm32f1xx_hal.h\""
+				},
+				{
+					"backtrace" : 8,
+					"define" : "USE_HAL_DRIVER"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 9,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/Core"
+				},
+				{
+					"backtrace" : 9,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/Core/Inc"
+				},
+				{
+					"backtrace" : 9,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/Core/Src"
+				},
+				{
+					"backtrace" : 9,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/Drivers"
+				},
+				{
+					"backtrace" : 9,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/Drivers/CMSIS"
+				},
+				{
+					"backtrace" : 9,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/Drivers/CMSIS/Device"
+				},
+				{
+					"backtrace" : 9,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/Drivers/CMSIS/Device/ST"
+				},
+				{
+					"backtrace" : 9,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/Drivers/CMSIS/Device/ST/STM32F1xx"
+				},
+				{
+					"backtrace" : 9,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/Drivers/CMSIS/Device/ST/STM32F1xx/Include"
+				},
+				{
+					"backtrace" : 9,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/Drivers/CMSIS/Device/ST/STM32F1xx/Source"
+				},
+				{
+					"backtrace" : 9,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/Drivers/CMSIS/Device/ST/STM32F1xx/Source/Templates"
+				},
+				{
+					"backtrace" : 9,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/Drivers/CMSIS/Include"
+				},
+				{
+					"backtrace" : 9,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/Drivers/STM32F1xx_HAL_Driver"
+				},
+				{
+					"backtrace" : 9,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/Drivers/STM32F1xx_HAL_Driver/Inc"
+				},
+				{
+					"backtrace" : 9,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/Drivers/STM32F1xx_HAL_Driver/Inc/Legacy"
+				},
+				{
+					"backtrace" : 9,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/Drivers/STM32F1xx_HAL_Driver/Src"
+				},
+				{
+					"backtrace" : 9,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/Task"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/Third_Party/Eigen3/Eigen/src/Cholesky"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/Third_Party/Eigen3/Eigen/src/CholmodSupport"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/Third_Party/Eigen3/Eigen/src/Core"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/Third_Party/Eigen3/Eigen/src/Core/arch/AVX"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/Third_Party/Eigen3/Eigen/src/Core/arch/AVX512"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/Third_Party/Eigen3/Eigen/src/Core/arch/AltiVec"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/Third_Party/Eigen3/Eigen/src/Core/arch/CUDA"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/Third_Party/Eigen3/Eigen/src/Core/arch/Default"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/Third_Party/Eigen3/Eigen/src/Core/arch/GPU"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/Third_Party/Eigen3/Eigen/src/Core/arch/HIP/hcc"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/Third_Party/Eigen3/Eigen/src/Core/arch/MSA"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/Third_Party/Eigen3/Eigen/src/Core/arch/NEON"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/Third_Party/Eigen3/Eigen/src/Core/arch/SSE"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/Third_Party/Eigen3/Eigen/src/Core/arch/SVE"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/Third_Party/Eigen3/Eigen/src/Core/arch/SYCL"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/Third_Party/Eigen3/Eigen/src/Core/arch/ZVector"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/Third_Party/Eigen3/Eigen/src/Core/functors"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/Third_Party/Eigen3/Eigen/src/Core/products"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/Third_Party/Eigen3/Eigen/src/Core/util"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/Third_Party/Eigen3/Eigen/src/Eigenvalues"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/Third_Party/Eigen3/Eigen/src/Geometry"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/Third_Party/Eigen3/Eigen/src/Geometry/arch"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/Third_Party/Eigen3/Eigen/src/Householder"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/Third_Party/Eigen3/Eigen/src/IterativeLinearSolvers"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/Third_Party/Eigen3/Eigen/src/Jacobi"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/Third_Party/Eigen3/Eigen/src/KLUSupport"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/Third_Party/Eigen3/Eigen/src/LU"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/Third_Party/Eigen3/Eigen/src/LU/arch"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/Third_Party/Eigen3/Eigen/src/MetisSupport"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/Third_Party/Eigen3/Eigen/src/OrderingMethods"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/Third_Party/Eigen3/Eigen/src/PaStiXSupport"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/Third_Party/Eigen3/Eigen/src/PardisoSupport"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/Third_Party/Eigen3/Eigen/src/QR"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/Third_Party/Eigen3/Eigen/src/SPQRSupport"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/Third_Party/Eigen3/Eigen/src/SVD"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/Third_Party/Eigen3/Eigen/src/SparseCholesky"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/Third_Party/Eigen3/Eigen/src/SparseCore"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/Third_Party/Eigen3/Eigen/src/SparseLU"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/Third_Party/Eigen3/Eigen/src/SparseQR"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/Third_Party/Eigen3/Eigen/src/StlSupport"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/Third_Party/Eigen3/Eigen/src/SuperLUSupport"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/Third_Party/Eigen3/Eigen/src/UmfPackSupport"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/Third_Party/Eigen3/Eigen/src/misc"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/Third_Party/Eigen3/Eigen/src/plugins"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/bsp/stm32_hal"
+				},
+				{
+					"backtrace" : 10,
+					"isSystem" : true,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/Third_Party/Dsp/CMSIS-DSP/Include"
+				},
+				{
+					"backtrace" : 10,
+					"isSystem" : true,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/algorithms/ahrs/inc"
+				},
+				{
+					"backtrace" : 10,
+					"isSystem" : true,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/algorithms/controller/base"
+				},
+				{
+					"backtrace" : 10,
+					"isSystem" : true,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/algorithms/controller/pid/inc"
+				},
+				{
+					"backtrace" : 10,
+					"isSystem" : true,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/algorithms/filter/inc"
+				},
+				{
+					"backtrace" : 10,
+					"isSystem" : true,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/algorithms/fsm/inc"
+				},
+				{
+					"backtrace" : 10,
+					"isSystem" : true,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/algorithms/ik_solver/chassis/inc"
+				},
+				{
+					"backtrace" : 10,
+					"isSystem" : true,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/algorithms/observer/inc"
+				},
+				{
+					"backtrace" : 10,
+					"isSystem" : true,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/bsp/tick"
+				},
+				{
+					"backtrace" : 10,
+					"isSystem" : true,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/devices/buzzer/inc"
+				},
+				{
+					"backtrace" : 10,
+					"isSystem" : true,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/devices/imu/inc"
+				},
+				{
+					"backtrace" : 10,
+					"isSystem" : true,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/devices/laser/inc"
+				},
+				{
+					"backtrace" : 10,
+					"isSystem" : true,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/devices/motor/inc"
+				},
+				{
+					"backtrace" : 10,
+					"isSystem" : true,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/devices/referee/inc"
+				},
+				{
+					"backtrace" : 10,
+					"isSystem" : true,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/devices/remote_control/inc"
+				},
+				{
+					"backtrace" : 10,
+					"isSystem" : true,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/devices/servo/inc"
+				},
+				{
+					"backtrace" : 10,
+					"isSystem" : true,
+					"path" : "D:/desktop/RM/24/MYHERO/PneumaticHero/Shooter/HW-Components/tools/inc"
+				}
+			],
+			"language" : "ASM",
+			"sourceIndexes" : 
+			[
+				25,
+				26
+			]
+		}
+	],
+	"dependencies" : 
+	[
+		{
+			"backtrace" : 2,
+			"id" : "drivers::@6890427a1f51a3e7e1df"
+		},
+		{
+			"backtrace" : 3,
+			"id" : "hwcomponents_bsp_stm32_hal::@7b37251b6bad7064c3a9"
+		}
+	],
+	"id" : "Shooter::@6890427a1f51a3e7e1df",
+	"link" : 
+	{
+		"commandFragments" : 
+		[
+			{
+				"fragment" : "-mcpu=cortex-m3  -Wall -Wextra -Wpedantic -fdata-sections -ffunction-sections -O0 -g3 -mcpu=cortex-m3  -Wall -Wextra -Wpedantic -fdata-sections -ffunction-sections -O0 -g3 -fno-rtti -fno-exceptions -fno-threadsafe-statics -Wno-unused-parameter -Wno-missing-field-initializers -Wno-pedantic -Wno-unknown-pragmas -Wno-reorder -g",
+				"role" : "flags"
+			},
+			{
+				"fragment" : "",
+				"role" : "flags"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "libdrivers.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 3,
+				"fragment" : "D:\\desktop\\RM\\24\\MYHERO\\PneumaticHero\\Shooter\\Lib\\hwcomponents\\Third_Party\\Dsp\\libhwcomponents_third_party_dsp.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 3,
+				"fragment" : "D:\\desktop\\RM\\24\\MYHERO\\PneumaticHero\\Shooter\\Lib\\hwcomponents\\algorithms\\ahrs\\libhwcomponents_algorithms_ahrs.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 3,
+				"fragment" : "D:\\desktop\\RM\\24\\MYHERO\\PneumaticHero\\Shooter\\Lib\\hwcomponents\\algorithms\\controller\\libhwcomponents_algorithms_controller.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 3,
+				"fragment" : "D:\\desktop\\RM\\24\\MYHERO\\PneumaticHero\\Shooter\\Lib\\hwcomponents\\algorithms\\filter\\libhwcomponents_algorithms_filter.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 3,
+				"fragment" : "D:\\desktop\\RM\\24\\MYHERO\\PneumaticHero\\Shooter\\Lib\\hwcomponents\\algorithms\\fsm\\libhwcomponents_algorithms_fsm.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 3,
+				"fragment" : "D:\\desktop\\RM\\24\\MYHERO\\PneumaticHero\\Shooter\\Lib\\hwcomponents\\algorithms\\ik_solver\\chassis\\libhwcomponents_algorithms_ik_solver_chassis.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 3,
+				"fragment" : "D:\\desktop\\RM\\24\\MYHERO\\PneumaticHero\\Shooter\\Lib\\hwcomponents\\algorithms\\observer\\libhwcomponents_algorithms_observer.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 3,
+				"fragment" : "D:\\desktop\\RM\\24\\MYHERO\\PneumaticHero\\Shooter\\Lib\\hwcomponents\\bsp\\stm32_hal\\libhwcomponents_bsp_stm32_hal.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 3,
+				"fragment" : "D:\\desktop\\RM\\24\\MYHERO\\PneumaticHero\\Shooter\\Lib\\hwcomponents\\bsp\\tick\\libhwcomponents_bsp_tick.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 3,
+				"fragment" : "D:\\desktop\\RM\\24\\MYHERO\\PneumaticHero\\Shooter\\Lib\\hwcomponents\\devices\\buzzer\\libhwcomponents_devices_buzzer.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 3,
+				"fragment" : "D:\\desktop\\RM\\24\\MYHERO\\PneumaticHero\\Shooter\\Lib\\hwcomponents\\devices\\imu\\libhwcomponents_devices_imu.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 3,
+				"fragment" : "D:\\desktop\\RM\\24\\MYHERO\\PneumaticHero\\Shooter\\Lib\\hwcomponents\\devices\\laser\\libhwcomponents_devices_laser.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 3,
+				"fragment" : "D:\\desktop\\RM\\24\\MYHERO\\PneumaticHero\\Shooter\\Lib\\hwcomponents\\devices\\motor\\libhwcomponents_devices_motor.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 3,
+				"fragment" : "D:\\desktop\\RM\\24\\MYHERO\\PneumaticHero\\Shooter\\Lib\\hwcomponents\\devices\\referee\\libhwcomponents_devices_referee.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 3,
+				"fragment" : "D:\\desktop\\RM\\24\\MYHERO\\PneumaticHero\\Shooter\\Lib\\hwcomponents\\devices\\remote_control\\libhwcomponents_devices_remote_control.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 3,
+				"fragment" : "D:\\desktop\\RM\\24\\MYHERO\\PneumaticHero\\Shooter\\Lib\\hwcomponents\\devices\\servo\\libhwcomponents_devices_servo.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 3,
+				"fragment" : "D:\\desktop\\RM\\24\\MYHERO\\PneumaticHero\\Shooter\\Lib\\hwcomponents\\tools\\libhwcomponents_tools.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 3,
+				"fragment" : "D:\\desktop\\RM\\24\\MYHERO\\PneumaticHero\\Shooter\\Lib\\hwcomponents\\Third_Party\\Dsp\\libhwcomponents_third_party_dsp.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 3,
+				"fragment" : "D:\\desktop\\RM\\24\\MYHERO\\PneumaticHero\\Shooter\\Lib\\hwcomponents\\bsp\\tick\\libhwcomponents_bsp_tick.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 3,
+				"fragment" : "D:\\desktop\\RM\\24\\MYHERO\\PneumaticHero\\Shooter\\Lib\\hwcomponents\\bsp\\stm32_hal\\libhwcomponents_bsp_stm32_hal.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "libdrivers.a",
+				"role" : "libraries"
+			}
+		],
+		"language" : "CXX"
+	},
+	"name" : "Shooter",
+	"nameOnDisk" : "Shooter.elf",
+	"paths" : 
+	{
+		"build" : ".",
+		"source" : "."
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "Header Files",
+			"sourceIndexes" : 
+			[
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				22,
+				24
+			]
+		},
+		{
+			"name" : "Source Files",
+			"sourceIndexes" : 
+			[
+				9,
+				10,
+				11,
+				12,
+				13,
+				14,
+				15,
+				16,
+				17,
+				18,
+				19,
+				20,
+				21,
+				23
+			]
+		},
+		{
+			"name" : "",
+			"sourceIndexes" : 
+			[
+				25,
+				26
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 1,
+			"path" : "Core/Inc/adc.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Core/Inc/can.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Core/Inc/gpio.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Core/Inc/i2c.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Core/Inc/main.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Core/Inc/spi.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Core/Inc/stm32f1xx_hal_conf.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Core/Inc/stm32f1xx_it.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Core/Inc/tim.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Core/Src/adc.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Core/Src/can.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Core/Src/gpio.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Core/Src/i2c.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Core/Src/main.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Core/Src/spi.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Core/Src/stm32f1xx_hal_msp.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Core/Src/stm32f1xx_it.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Core/Src/syscalls.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Core/Src/sysmem.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Core/Src/system_stm32f1xx.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Core/Src/tim.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Task/myadc.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Task/myadc.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Task/mydac.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Task/mydac.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 1,
+			"path" : "HW-Components/Third_Party/SEGGER/RTT/SEGGER_RTT_ASM_ARMv7M.S",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 1,
+			"path" : "startup_stm32f103xe.s",
+			"sourceGroupIndex" : 2
+		}
+	],
+	"type" : "EXECUTABLE"
+}

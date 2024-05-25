@@ -1,0 +1,3 @@
+[submodule "Shooter/HW-Components"]
+	path = Shooter/HW-Components
+	url = https://github.com/ZJU-HelloWorld/HW-Components.git
