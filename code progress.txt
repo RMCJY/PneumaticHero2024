@@ -1,0 +1,9 @@
+code progress
+communication_tools.cpp					done	?
+communication_tools.hpp					done	?
+gimbal_shooter_comm.cpp					done	2024/6/30/15:16
+gimbal_shooter_comm.hpp				done	2024/6/30/15:16
+offline_checker.hpp						done 	2024/6/30/16:47
+Instance									中有好几个怪怪的文件不知道干什么用的
+proportional_valve_control.hpp				done	2024/6/30/16:00
+proportional_valve_control.cpp				还需要根据新使用的TI芯片修改通讯方式

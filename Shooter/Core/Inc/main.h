@@ -65,6 +65,12 @@ void Error_Handler(void);
 #define LED3_GPIO_Port GPIOB
 #define LED4_Pin GPIO_PIN_15
 #define LED4_GPIO_Port GPIOB
+#define Valve25_Pin GPIO_PIN_6
+#define Valve25_GPIO_Port GPIOC
+#define Valve23_Pin GPIO_PIN_7
+#define Valve23_GPIO_Port GPIOC
+#define Photogate_Pin GPIO_PIN_8
+#define Photogate_GPIO_Port GPIOC
 
 /* USER CODE BEGIN Private defines */
 
