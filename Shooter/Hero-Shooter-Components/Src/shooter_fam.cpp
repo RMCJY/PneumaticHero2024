@@ -2,7 +2,7 @@
  * @Author: RMCJY 1409947012@qq.com
  * @Date: 2024-06-30 16:03:34
  * @LastEditors: RMCJY 1409947012@qq.com
- * @LastEditTime: 2024-07-03 07:22:54
+ * @LastEditTime: 2024-07-03 15:33:30
  * @FilePath: \Shooter\Hero-Shooter-Components\Src\shooter_fam.cpp
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -77,11 +77,11 @@ void ShooterFsm::updatePillState()
 void ShooterFsm::updateProportionalValve()
 {
   // 感觉没有必要做离线检验，唯一可能得离线检验的方法是测试ADC读到的数据是不是0
+  // 其他部分的离线检测没有很看明白是怎么执行的，这一段有点不知道在哪里update？
   OfflineChecker *oc_ptr = oc_ptr_[kOCIProportionalValve];
   HW_ASSERT(oc_ptr != nullptr, "pointer to Proportional Valve offline checker is nullptr", oc_ptr);
   HW_ASSERT(pv_ptr_ != nullptr, "pointer to Proportional Valve offline checker is nullptr", pv_ptr_);
   
-  // 上述这段为判断比例阀是否离线的代码要放在main.fsm中去判断
   if(oc_ptr->isOffline())
   {
     is_proportional_valve_ready_ = false;
@@ -108,11 +108,11 @@ ShooterFsm::WorkState ShooterFsm::updateWorkState()
       return WorkState::kResurrection;
     }
   } else if (current_state == WorkState::kResurrection) {
-    // 复活状态下，如果比例阀准备就绪，则切到工作状态
-    // if (is_proportional_valve_ready_) {
-    //   return WorkState::kWorking;
-    // }
-    return WorkState::kWorking;
+    // 复活状态下，如果弹道完成清空，则切到工作状态
+    if (is_restart_ready_) {
+      return WorkState::kWorking;
+    }
+    // return WorkState::kWorking;
   } else if (current_state == WorkState::kWorking) {
     // 工作状态下，保持当前状态
   } else {
@@ -147,7 +147,10 @@ void ShooterFsm::runOnDead()
 
 void ShooterFsm::runOnResurrection()
 {
-  resetDataOnResurrection();
+  // resetDataOnResurrection();
+  getProportionalValveAirpreRef();
+  calcProportionalValveInput();
+  getAirBottleState();
   setCommDataOnResurrection();
 };
 
@@ -253,8 +256,32 @@ void ShooterFsm::setCommDataOnDead()
 
 void ShooterFsm::setCommDataOnResurrection()
 {
+  OfflineChecker *oc_ptr = oc_ptr_[kOCIProportionalValve];
+  HW_ASSERT(oc_ptr != nullptr, "pointer to Proportional Valve offline checker is nullptr", oc_ptr);
+  HW_ASSERT(pid_ptr_[kPidIdxProportionalValve] != nullptr, "pointer to Proportional Valve PID is nullptr", pid_ptr_[kPidIdxProportionalValve]);
   HW_ASSERT(pv_ptr_ != nullptr, "pointer to Proportional Valve offline checker is nullptr", pv_ptr_);
-  pv_ptr_->DAC5571SetVoltage(0);
+
+  if(oc_ptr->isOffline())
+  {
+    pid_ptr_[kPidIdxProportionalValve]->reset();
+    pv_ptr_->DAC5571SetVoltage(0);
+  }
+  else
+  {
+    pv_ptr_->DAC5571SetVoltage(proportional_valve_airpre_raw_input_);
+  }
+  if(restart_wait_time < 500 && is_airpre_ready_)
+  {
+    SetValve23State(Valve23State::kValve23Close);
+    restart_wait_time++;
+    is_restart_ready_ = false;
+  }
+  else if(restart_wait_time >= 500 && is_airpre_ready_)
+  {
+    restart_wait_time = 0;
+    is_restart_ready_ = true;
+  }
+
   gs_comm_ptr_->shooter_data().is_shooter_ready = false;
   gs_comm_ptr_->shooter_data().is_shooter_pill_ready = false;
   gs_comm_ptr_->shooter_data().is_airpre_ready = false;
@@ -279,6 +306,8 @@ void ShooterFsm::setCommDataOnWorking()
     pv_ptr_->DAC5571SetVoltage(proportional_valve_airpre_raw_input_);
   }
 
+  // 各个阀门的状态没有反馈，只能通过时间大概去判断阀门状态，这边的阈值还是随便设置的，感觉实际应该可以再短一点
+  // #TODO 时间阈值还需再测
   if(is_airpre_ready_ && gs_comm_ptr_->gimbal_data().shoot_command)
   {
     if(shooter_wait_time == 0)
@@ -335,6 +364,7 @@ void ShooterFsm::setCommDataOnWorking()
  */
 void ShooterFsm::reset()
 {
+  // #TODO这个不应该在restondead中再更新一下嘛？
   work_state_ = WorkState::kDead;
   memset(&proportional_valve_airpre_ref_, 0, sizeof(proportional_valve_airpre_ref_));
   memset(&proportional_valve_airpre_raw_input_, 0, sizeof(proportional_valve_airpre_raw_input_));
@@ -346,6 +376,7 @@ void ShooterFsm::reset()
   is_proportional_valve_ready_ = false;
   is_airpre_ready_ = false;
   is_air_bottle_ready_ = false;
+  is_restart_ready_ = false;
   SetValve23State(Valve23State::kValve23Open);
   SetValve25State(Valve25State::kValve25Open);
   memset(&proportional_valve_airpre_fdb_, 0, sizeof(proportional_valve_airpre_fdb_));
@@ -370,8 +401,6 @@ void ShooterFsm::resetDataOnResurrection()
   memset(&proportional_valve_airpre_raw_input_, 0, sizeof(proportional_valve_airpre_raw_input_));
 
   // #TODO 还要修改一下，如果该状态下有弹丸在两阀之间会出问题，所以这边要把2位3通阀先空放一下
-  SetValve23State(Valve23State::kValve23Open);
-  SetValve25State(Valve25State::kValve25Open);
 
   resetPids();
 }

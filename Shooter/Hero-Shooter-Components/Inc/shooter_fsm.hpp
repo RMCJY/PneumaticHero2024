@@ -2,7 +2,7 @@
  * @Author: RMCJY 1409947012@qq.com
  * @Date: 2024-06-30 16:03:20
  * @LastEditors: RMCJY 1409947012@qq.com
- * @LastEditTime: 2024-07-02 19:46:49
+ * @LastEditTime: 2024-07-03 15:16:01
  * @FilePath: \Shooter\Hero-Shooter-Components\Inc\shooter_fsm.hpp
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -129,8 +129,10 @@ private:
   bool is_proportional_valve_ready_ = false;         ///< 比例阀气压是否在线
   bool is_airpre_ready_ = false;        ///< 检测气室气压是否达到目标设定值
   bool is_air_bottle_ready_ = false;    ///< 检查气瓶是否处于欠压状态
+  bool is_restart_ready_ = false;        ///< 从死亡状态回归，可能还有弹丸未发出，这里做一次空发，清空弹道             
   uint32_t airpre_duration_ = 0;        ///< 气压达到设定值的计数器，判断气瓶是否出现欠压
   uint32_t shooter_wait_time = 0;
+  uint32_t restart_wait_time = 0;
   bool is_valve23_close = false;
   bool is_valve25_close = false;
   float proportional_valve_airpre_fdb_ = 0;
