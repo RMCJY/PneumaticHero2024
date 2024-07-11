@@ -18,7 +18,6 @@
 #include "gimbal_shooter_comm.h"
 
 
-// shooter_state_t shooter_state;
 
 
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
