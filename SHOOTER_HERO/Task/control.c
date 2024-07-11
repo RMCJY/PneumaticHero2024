@@ -121,7 +121,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 }
 
 
-void HardwareInit(void)
-{
-    HAL_GPIO_WritePin(I2C_A0_GPIO_Port, I2C_A0_Pin, RESET);         // 设置I2C地址为
-}
+// void HardwareInit(void)
+// {
+//     HAL_GPIO_WritePin(I2C_A0_GPIO_Port, I2C_A0_Pin, RESET);         // 设置I2C地址为
+// }
