@@ -1,0 +1,132 @@
+{
+	"editor.tabSize": 2,
+	"C_Cpp.clang_format_style": "file",
+	"C_Cpp.default.includePath": ["${workspaceFolder}/**"],
+	"C_Cpp.default.browse.path": [
+		"${workspaceFolder}/**",
+		"${workspaceFolder}/.git/**",
+		"${workspaceFolder}/build/**"
+	],
+	"C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
+	"C_Cpp.default.defines": [
+		"_DEBUG",
+		"UNICODE",
+		"_UNICODE",
+		"USE_HAL_DRIVER",
+		"STM32F407xx"
+	],
+	"C_Cpp.default.cStandard": "c17",
+	"C_Cpp.default.cppStandard": "c++17",
+	"C_Cpp.default.compilerPath": "cl.exe",
+	"C_Cpp.clang_format_fallbackStyle": "Google",
+	"[c]": {
+		"editor.quickSuggestions": {
+			"comments": "on",
+			"other": "on",
+			"strings": "on"
+		},
+		"editor.semanticHighlighting.enabled": true,
+		"editor.suggest.insertMode": "replace",
+		"editor.wordBasedSuggestions": "allDocuments"
+	},
+	"[cpp]": {
+		"editor.quickSuggestions": {
+			"comments": "on",
+			"other": "on",
+			"strings": "on"
+		},
+		"editor.semanticHighlighting.enabled": true,
+		"editor.suggest.insertMode": "replace",
+		"editor.wordBasedSuggestions": "allDocuments"
+	},
+	"cmake.configureOnOpen": true,
+	"cmake.generator": "MinGW Makefiles",
+	"cmake.sourceDirectory": "${workspaceFolder}",
+	// koloFileHeader -------------------------------------------------
+	// 头部注释
+	"fileheader.customMade": {
+		"custom_string_obkoro9": "******************************************************************************",
+		"FilePath": "only file name",
+		"Description": "",
+		"custom_string_obkoro1": " @history   :",
+		"custom_string_obkoro2": "  Version     Date            Author          Note",
+		"custom_string_obkoro3": "  V0.9.0      yyyy-mm-dd      <author>        1. <note>",
+		"custom_string_obkoro10": "******************************************************************************",
+		"custom_string_obkoro11": " @attention :",
+		"custom_string_obkoro4": "******************************************************************************",
+		"custom_string_obkoro1_copyright": "  Copyright (c) ${now_year} Hello World Team, Zhejiang University.",
+		"custom_string_obkoro5": "  All Rights Reserved.",
+		"custom_string_obkoro7": "******************************************************************************"
+	},
+	// 函数注释
+	"fileheader.cursorMode": {
+		"Description": "",
+		"param": "", // param 开启函数参数自动提取 需要将光标放在函数行或者函数上方的空白行
+		" @arg": "None",
+		"return": "",
+		" @note": "None"
+	},
+	"fileheader.configObj": {
+		"prohibitAutoAdd": ["md", "json"],
+		"dateFormat": "YYYY-MM-DD",
+		"autoAdd": false, // 默认开启
+		"autoAddLine": 1, // 默认文件超过100行就不再自动添加头部注释
+		"createHeader": false, // 默认关闭
+		"language": {
+			// 一次匹配多种文件后缀文件 不用重复设置
+			"h/c/hpp/cpp": {
+				"head": "/** ", // 统一增加几个*号
+				"middle": " *",
+				"end": " */"
+			}
+		},
+		"wideSame": true, // 头部注释等宽设置
+		"wideNum": 12, // 头部注释字段长度
+		"functionWideNum": 14, // 0 默认关闭 设置一个正整数即可开启 比如12
+		"specialOptions": {
+			"FilePath": " @file  ",
+			"Description": " @brief   ",
+			"param": " @param",
+			"return": " @retval "
+		},
+		"afterAnnotation": {
+			"c": "/* Includes ------------------------------------------------------------------*/\n/* Private macro -------------------------------------------------------------*/\n/* Private constants ---------------------------------------------------------*/\n/* Private types -------------------------------------------------------------*/\n/* Private variables ---------------------------------------------------------*/\n/* External variables --------------------------------------------------------*/\n/* Private function prototypes -----------------------------------------------*/\n/* Exported function definitions ---------------------------------------------*/\n/* Private function definitions ----------------------------------------------*/\n",
+			"cpp": "/* Includes ------------------------------------------------------------------*/\n/* Private constants ---------------------------------------------------------*/\n/* Private macro -------------------------------------------------------------*/\n/* Private types -------------------------------------------------------------*/\n/* Private variables ---------------------------------------------------------*/\n/* External variables --------------------------------------------------------*/\n/* Private function prototypes -----------------------------------------------*/\n/* Exported function definitions ---------------------------------------------*/\n/* Private function definitions ----------------------------------------------*/\n",
+			"h": "/* Define to prevent recursive inclusion -------------------------------------*/\n#ifndef PROJECT_PATH_FILE_H_\n#define PROJECT_PATH_FILE_H_\n\n#ifdef __cplusplus\nextern \"C\" {\n#endif\n\n/* Includes ------------------------------------------------------------------*/\n/* Exported macro ------------------------------------------------------------*/\n/* Exported constants --------------------------------------------------------*/\n/* Exported types ------------------------------------------------------------*/\n/* Exported variables --------------------------------------------------------*/\n/* Exported function prototypes ----------------------------------------------*/\n\n#ifdef __cplusplus\n}\n#endif\n\n#endif /* PROJECT_PATH_FILE_H_ */",
+			"hpp": "/* Define to prevent recursive inclusion -------------------------------------*/\n#ifndef PROJECT_PATH_FILE_HPP_\n#define PROJECT_PATH_FILE_HPP_\n\n/* Includes ------------------------------------------------------------------*/\n/* Exported macro ------------------------------------------------------------*/\n/* Exported constants --------------------------------------------------------*/\n/* Exported types ------------------------------------------------------------*/\n/* Exported variables --------------------------------------------------------*/\n/* Exported function prototypes ----------------------------------------------*/\n\n#endif /* PROJECT_PATH_FILE_HPP_ */"
+		}, // 头部注释之后插入内容
+		"atSymbol": ["@", "@"], // 所有文件的头部注释和函数注释的默认值
+		"atSymbolObj": {},
+		"colon": [": ", ""], // 所有文件的头部注释和函数注释的默认值
+		"colonObj": {},
+		"openFunctionParamsCheck": true, // 默认开启
+		"typeParamOrder": "param",
+		"functionParamsShape": ["", ""], // [] or {}
+		"functionParamAddStr": ":", // 默认不增加字符串
+		"functionTypeSymbol": "None" // 参数没有类型时的默认值
+	},
+	"files.associations": {
+		"*.json": "json",
+		"*.js": "javascript",
+		"*.cmake": "cmake",
+		"*.c": "c",
+		"*.h": "c",
+		"*.cpp": "cpp",
+		"*.hpp": "cpp",
+		"*.cc": "cpp",
+		"*.hh": "cpp",
+		"random": "cpp",
+		"cmath": "cpp",
+		"memory": "cpp",
+		"optional": "cpp",
+		"vector": "cpp",
+		"xstring": "cpp",
+		"xutility": "cpp",
+		"array": "cpp",
+		"string": "cpp",
+		"string_view": "cpp",
+		"ranges": "cpp",
+		"limits": "cpp",
+		"cstdlib": "cpp"
+	}
+}

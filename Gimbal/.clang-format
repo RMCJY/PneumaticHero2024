@@ -1,0 +1,71 @@
+Language: Cpp
+BasedOnStyle: Google
+BreakBeforeBraces: Linux
+UseTab: Never
+IndentWidth: 2
+TabWidth: 2
+# AllowShortIfStatementsOnASingleLine: false
+ColumnLimit: 160
+# 是否允许clang-format尝试重新粘合注释(true/false), 不建议使用
+ReflowComments: false
+# 不使用CRLF, 强制关闭, 如果DeriveLineEnding为true却未自动决策出来, 此项用于fallback策略
+UseCRLF: false
+# 空行保持, 建议为1
+MaxEmptyLinesToKeep: 1
+# 大括号换行
+BraceWrapping:
+  # 在case后的大括号是否换行
+  AfterCaseLabel: true
+  # class后
+  AfterClass: true
+  # 控制语句(if/for/while/switch/...)后是否换行
+  # - Never: 永远不, 即永远将语句体的大括号放置于控制语句同一行
+  # - MultiLine: 多行控制语句才进行换行
+  # - Always: 永远换行, 建议
+  AfterControlStatement: Always
+  # 下面比较容易理解, 不再作无意义的解释
+  AfterEnum: true
+  AfterFunction: true
+  AfterNamespace: true
+  AfterObjCDeclaration: true
+  AfterStruct: true
+  AfterUnion: true
+  AfterExternBlock: true
+  BeforeCatch: false
+  BeforeElse: true
+  BeforeLambdaBody: false
+  BeforeWhile: false
+  IndentBraces: false
+  SplitEmptyFunction: true
+  SplitEmptyRecord: true
+  SplitEmptyNamespace: true
+AlignAfterOpenBracket: Align
+# 对齐结构体数组 当数组的列数相等时，会对齐每行的文本。
+AlignArrayOfStructures: Left
+# 连续赋值时，对齐所有等号
+# 最新版本支持分别指定属性，包括额外对混合元素符(+=等)的支持:
+# AlignConsecutiveAssignments:
+#   Enabled: true
+#   AcrossEmptyLines: false
+#   AcrossComments: true
+#   AlignCompound: true
+#   PadOperators: false
+# AlignConsecutiveBitFields:
+#   Enabled: true
+#   AcrossEmptyLines: true
+#   AcrossComments: true
+# 连续声明对齐 最好不要跨过空白行，因为容易把函数定义也给对齐了
+# AlignConsecutiveDeclarations:
+#   Enabled: true
+#   AcrossEmptyLines: false
+#   AcrossComments: true
+# 对齐分割语法行的斜杠符 \
+# AlignEscapedNewlines: Left
+# AlignOperands: AlignAfterOperators
+# # 对齐尾部注释 旧版本是bool值，直接使用true或者false
+AlignTrailingComments: true
+# AllowAllArgumentsOnNextLine: true
+# AllowAllParametersOfDeclarationOnNextLine: true
+# AllowShortBlocksOnASingleLine: Always
+# AllowShortEnumsOnASingleLine: Always
+# AllowShortFunctionsOnASingleLine: Always
