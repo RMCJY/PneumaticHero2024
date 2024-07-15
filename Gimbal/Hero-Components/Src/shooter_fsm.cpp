@@ -122,7 +122,7 @@ ShooterFsm::WorkState ShooterFsm::updateWorkState()
     // 死亡状态下，如果底盘上电，则切到复活状态
     OfflineChecker *shooter_ptr = oc_ptr_[kOCIShooter];
     HW_ASSERT(shooter_ptr != nullptr, "pointer to shooter is null", shooter_ptr);
-    if (is_chassis_board_ready_ && shooter_ptr->isOnline()) {
+    if (is_chassis_board_ready_ && !(shooter_ptr->isOffline())) {
       return WorkState::kResurrection;
     }
   } else if (current_state == WorkState::kResurrection) {

@@ -36,7 +36,7 @@ namespace hero
 class ShooterFsm : public hello_world::MemMgr
 {
  public:
-  typedef hero::OfflineChecker OfflineChecker;
+  typedef hello_world::OfflineChecker OfflineChecker;
   typedef hero::GimbalChassisComm GimbalChassisComm;
 
   /** 工作状态 */

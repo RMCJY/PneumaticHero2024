@@ -35,6 +35,7 @@ class MiniGimbalFsm : public hello_world::MemMgr
  public:
   typedef hw_servo::Servo Servo;
   typedef hero::GimbalChassisComm GimbalChassisComm;
+  typedef hello_world::OfflineChecker OfflineChecker;
 
   /** 工作状态 */
   enum WorkState : uint8_t {

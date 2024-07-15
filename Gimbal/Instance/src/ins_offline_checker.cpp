@@ -19,30 +19,30 @@
 /* Private types -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
 
-hero::OfflineChecker unique_oc_motor_yaw(50);
-hero::OfflineChecker unique_oc_motor_pitch(50);
+hello_world::OfflineChecker unique_oc_motor_yaw(50);
+hello_world::OfflineChecker unique_oc_motor_pitch(50);
 // CHANGE 气动没有摩擦轮结构这边注释
 // hero::OfflineChecker unique_oc_motor_fric_left(50);
 // hero::OfflineChecker unique_oc_motor_fric_right(50);
 
 // CHANGE 增加发射机构的offline checker
-hero::OfflineChecker unique_oc_shooter_control_board(50);
-hero::OfflineChecker unique_oc_chassis_control_board(50);
-hero::OfflineChecker unique_oc_vision(100);
+hello_world::OfflineChecker unique_oc_shooter_control_board(50);
+hello_world::OfflineChecker unique_oc_chassis_control_board(50);
+hello_world::OfflineChecker unique_oc_vision(100);
 
 /* External variables --------------------------------------------------------*/
 /* Private function prototypes -----------------------------------------------*/
 /* Exported function definitions ---------------------------------------------*/
 
-hero::OfflineChecker* CreateOcMotorYaw() { return &unique_oc_motor_yaw; };
-hero::OfflineChecker* CreateOcMotorPitch() { return &unique_oc_motor_pitch; };
+hello_world::OfflineChecker* CreateOcMotorYaw() { return &unique_oc_motor_yaw; };
+hello_world::OfflineChecker* CreateOcMotorPitch() { return &unique_oc_motor_pitch; };
 // CHANGE 气动没有摩擦轮结构这边注释
 // hero::OfflineChecker* CreateOcMotorFricLeft() { return &unique_oc_motor_fric_left; };
 // hero::OfflineChecker* CreateOcMotorFricRight() { return &unique_oc_motor_fric_right; };
 
 // CHANGE 增加发射机构的offline checker
-hero::OfflineChecker* CreateOcShooterControlBoard() { return &unique_oc_shooter_control_board; };
-hero::OfflineChecker* CreateOcChassisControlBoard() { return &unique_oc_chassis_control_board; };
-hero::OfflineChecker* CreateOcVision() { return &unique_oc_vision; };
+hello_world::OfflineChecker* CreateOcShooterControlBoard() { return &unique_oc_shooter_control_board; };
+hello_world::OfflineChecker* CreateOcChassisControlBoard() { return &unique_oc_chassis_control_board; };
+hello_world::OfflineChecker* CreateOcVision() { return &unique_oc_vision; };
 
 /* Private function definitions ----------------------------------------------*/

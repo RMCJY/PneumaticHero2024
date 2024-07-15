@@ -86,7 +86,7 @@ class GimbalFsm : public hello_world::MemMgr
   typedef hw_motor::Motor Motor;
   typedef hw_laser::Laser Laser;
   typedef hw_pid::MultiNodesPid MultiNodesPid;
-  typedef hero::OfflineChecker OfflineChecker;
+  typedef hello_world::OfflineChecker OfflineChecker;
   typedef hero::GimbalChassisComm GimbalChassisComm;
   typedef hw_filter::Td Td;
   typedef hello_world::PeriodAngle2ContAngleRad p2c;

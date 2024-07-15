@@ -24,16 +24,16 @@
 /* Exported variables --------------------------------------------------------*/
 /* Exported function prototypes ----------------------------------------------*/
 
-hero::OfflineChecker* CreateOcMotorYaw();
-hero::OfflineChecker* CreateOcMotorPitch();
+hello_world::OfflineChecker* CreateOcMotorYaw();
+hello_world::OfflineChecker* CreateOcMotorPitch();
 // CHANGE 气动没有摩擦轮结构这边注释
 // hero::OfflineChecker* CreateOcMotorFricLeft();
 // hero::OfflineChecker* CreateOcMotorFricRight();
 
 // CHANGE 增加发射机构的offline checker
-hero::OfflineChecker* CreateOcShooterControlBoard();
+hello_world::OfflineChecker* CreateOcShooterControlBoard();
 
-hero::OfflineChecker* CreateOcChassisControlBoard();
-hero::OfflineChecker* CreateOcVision();
+hello_world::OfflineChecker* CreateOcChassisControlBoard();
+hello_world::OfflineChecker* CreateOcVision();
 
 #endif /* INSTANCE_INS_OFFLINE_CHECKER_HPP_ */

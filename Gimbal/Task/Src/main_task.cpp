@@ -34,7 +34,6 @@ using hero::GimbalFsm;
 using hero::Imu;
 using hero::MainFsm;
 using hero::MiniGimbalFsm;
-using hero::OfflineChecker;
 using hero::ShooterFsm;
 using hero::Vision;
 using hw_filter::Td;
@@ -42,6 +41,7 @@ using hw_laser::Laser;
 using hw_motor::Motor;
 using hw_pid::MultiNodesPid;
 using hw_servo::Servo;
+using hello_world::OfflineChecker;
 
 /* Private macro -------------------------------------------------------------*/
 /* Private constants ---------------------------------------------------------*/

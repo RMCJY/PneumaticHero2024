@@ -222,7 +222,7 @@ void GimbalFsm::calcGimbalAngleRef()
 
   Cmd tmp_ang_ref = {0.0f};
   // 如果控制模式是自动，且视觉模块没有离线、视觉模块检测到有效目标，且视觉反馈角度与当前角度相差不大
-  if (ctrl_mode_ == CtrlMode::kCtrlAuto && oc_ptr_[kOCIVision]->isOnline() && vision_ptr_->isTargetDetected() &&
+  if (ctrl_mode_ == CtrlMode::kCtrlAuto && !(oc_ptr_[kOCIVision]->isOffline()) && vision_ptr_->isTargetDetected() &&
       abs(last_joint_ang_ref_.yaw - joint_ang_ref_vision_[JointIdx::kJointIdxYaw]) < 0.5f &&
       abs(last_joint_ang_ref_.pitch - joint_ang_ref_vision_[JointIdx::kJointIdxPitch]) < 0.2f) {
     tmp_ang_ref.yaw = joint_ang_ref_vision_[JointIdx::kJointIdxYaw];
