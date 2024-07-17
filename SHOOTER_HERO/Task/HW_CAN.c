@@ -10,6 +10,7 @@
 /* ------------------------------ Include ------------------------------ */
 
 #include "HW_CAN.h"
+#include "gimbal_shooter_comm.h"
 #include "shooter.h"
 
 /* ------------------------------ Function Definition ------------------------------ */
@@ -61,41 +62,10 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef* hcan_rx)
     {
 		if (HAL_CAN_GetRxMessage(hcan_rx, CAN_RX_FIFO0, &RxMessageHeader, rawData) == HAL_OK)		// 获得接收到的数据头和数据
 		{
-			if(RxMessageHeader.StdId == MASTER_BASEADDR)      //判断数据帧头ID，这里表示上位机
+
+            if(RxMessageHeader.StdId == GIMBAL_BASEADDR)
             {
-                // RxData[0] = rawData[0];
-                // RxData[1] = rawData[1];
-                // RxData[2] = rawData[2];
-                // // 第一位为0、1
-                // // 1发射
-                // // 0不发射
-                // if(RxData[0] == 1)
-                // {
-                //     if(shooter.shooter_command == 2)
-                //     {
-                //         shooter.shooter_command = 3;
-                //     }
-                //     else
-                //     {
-                //         shooter.shooter_command = 1;
-                //     }
-                // }
-                if(shooter.is_shooter_ready == SHOOTER_IDLE)
-                {
-                    /*测试使用，将23/25分开来*/
-                    shooter.shooter_command = SHOOTER_COMMAND_ACTIVE;
-                    // shooter.shooter_command = rawData[0];
-                    HAL_GPIO_WritePin(LED4_GPIO_Port,LED4_Pin,RESET);
-                }
-                else if(shooter.shooter_command == SHOOTER_COMMAND_ACTIVE)
-                {
-                    /*测试使用，将23/25分开来*/
-                    shooter.shooter_command = SHOOTER_COMMAND_NEXT;
-                }
-			}
-            if(RxMessageHeader.StdId == SPEED_ADRR)
-            {
-                shooter.bullet_speed = (rawData[0] * 256 + rawData[1]) / 1000;
+                decodeG2S(rawData);
             }
         }
     }

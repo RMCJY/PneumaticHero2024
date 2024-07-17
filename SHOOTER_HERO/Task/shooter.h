@@ -49,23 +49,35 @@
 #define BULLET_NOTE         1
 #define BULLET_READY        2
 
+#define SHOOTER_CLEAR_NOTE  1
+#define SHOOTER_CLEAR_READY 0
+
+#define SHOOTER_RFR_POWER_ON    1
+#define SHOOTER_RFR_POWER_OFF   0
+
 typedef struct 
 {
-    uint8_t shooter_command;
-    uint8_t phtogate_state;
     uint8_t valve23_target;
     uint8_t valve25_target;
-    uint8_t is_air_bottle_ready;
-    uint8_t is_airpre_ready;
-    uint8_t is_shooter_ready;
-    uint8_t work_state;
-    uint8_t bullet_note;        // 用于提醒Gimbal拨弹
-    uint8_t first_run_flag;     // 首次进入或者从异常状态重新返回正常，需要空发保证弹道清空
+    uint8_t phtogate_state;        
+    uint8_t first_run_flag;          // 首次进入或者从异常状态重新返回正常，需要空发保证弹道清空
     uint16_t valve23_wait_time;
     uint16_t valve25_wait_time;
-    float bullet_speed;
     float proportional_valve_ref;
     float proportional_valve_fdb;
+
+    // shooter to gimbal
+    uint8_t is_shooter_ready;       // 是否处于允许发射状态，正在发射过程中拨弹会造成卡弹
+    uint8_t bullet_feed_note;       // 拨弹没有到位就下发发射指令时，反馈提醒拨弹
+    uint8_t shooter_clear_note;     // 发射机构从断电到上电的过程中，或者首次启动的过程中，可能需要操作手空发来清空弹道
+    uint8_t work_state;             // 发射状态
+    uint8_t is_air_bottle_ready;    // 气瓶是否准备好，不处于欠压状态
+    uint8_t is_airpre_ready;        // 气压是否到达设定值
+
+    // gimbal to shooter
+    uint8_t is_rfr_shooter_power_on;// 从裁判系统读取发射机构是否上电
+    uint8_t shooter_signal;         // 从云台接收到的发射指令
+    float rfr_bullet_speed;         // 裁判系统读取的射速，暂时没用，后续可能会根据读取射速调整气压形成闭环？
 } Shooter_t;
 
 

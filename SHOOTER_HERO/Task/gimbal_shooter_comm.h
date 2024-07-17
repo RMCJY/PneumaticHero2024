@@ -6,7 +6,7 @@
 #define SHOOTER_SEND_ID 0x1ff
 
 void ShooterGimbalComm(void);
-
-
+void decodeG2S(uint8_t rx_data[8]);
+void encodeS2G(uint8_t tx_data[8]);
 
 #endif

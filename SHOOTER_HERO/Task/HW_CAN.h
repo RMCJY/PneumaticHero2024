@@ -12,15 +12,11 @@
 /* ------------------------------ Include ------------------------------ */
 #include "can.h"
 #include "main.h"
-#include "control.h"
+#include "main_task.h"
 
 /* ------------------------------ Macro Definition ------------------------------ */
-#define MASTER_BASEADDR 0x1f0
+#define GIMBAL_BASEADDR 0x1f0
 #define SPEED_ADRR      0x1f1       // 仅测试使用，用于查看弹速
-
-#define FAN_IDLE        0           //扇叶显示状态——空闲
-#define FAN_ACTIVATABLE 1           //扇叶显示状态——可激活
-#define FAN_ACTIVATED   2           //扇叶显示状态——已激活
 
 /* ------------------------------ Function Declaration ------------------------------ */
 void CanFilter_Init(CAN_HandleTypeDef* hcan_init);

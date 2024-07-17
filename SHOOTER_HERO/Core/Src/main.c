@@ -27,7 +27,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "HW_CAN.h"
-#include "control.h"
+#include "main_task.h"
 #include "shooter.h"
 #include "proportional_valve.h"
 /* USER CODE END Includes */
