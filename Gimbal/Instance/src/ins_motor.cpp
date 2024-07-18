@@ -41,13 +41,13 @@ const hw_motor::OptionalParams kMotorParamsYaw = {
 //     // .ex_redu_rat = 14,
 // };
 
-// CHANGE 气动的由3508的屁股控制pitch,这边修改带安吉的参数
+// CHANGE 气动的由3508的屁股控制pitch,这边修改参数
 const hw_motor::OptionalParams kMotorParamsPitch = {
     .input_type = hw_motor::kInputTypeRaw,
-    .angle_range = hw_motor::kAngleRangeNegPiToPosPi,
+    .angle_range = hw_motor::kAngleRangeNegInfToPosInf,
     .dir = hw_motor::kDirFwd,
     /** 是否移除电机自带的减速器 */
-    .remove_build_in_reducer = false,
+    .remove_build_in_reducer = true,
     /** 电机输出端实际角度与规定角度的差值 */
     .angle_offset = 0,
     /** 电机外置减速器的减速比（额外） */

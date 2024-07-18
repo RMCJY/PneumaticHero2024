@@ -230,6 +230,7 @@ class GimbalChassisComm : public hello_world::MemMgr
   uint32_t getTxMsgId() const { return tx_msg_id_; };
   uint32_t getRxMsgId() const { return rx_msg_id_; };
 
+
  private:
   void encodeG2C(uint8_t tx_data[8]);
   void decodeG2C(uint8_t rx_data[8]);

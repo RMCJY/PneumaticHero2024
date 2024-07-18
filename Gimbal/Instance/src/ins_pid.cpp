@@ -27,6 +27,8 @@ const float kMaxPidOutPitch = 16384.0f;
 
 const hw_pid::OutLimit kOutLimitYaw = hw_pid::OutLimit(true, -kMaxPidOutYaw, kMaxPidOutYaw);
 const hw_pid::OutLimit kOutLimitPitch = hw_pid::OutLimit(true, -kMaxPidOutPitch, kMaxPidOutPitch);
+const hw_pid::OutLimit kOutLimitPitchFind0 = hw_pid::OutLimit(true, -kMaxPidOutPitch, kMaxPidOutPitch);
+
 // const hw_pid::OutLimit kOutLimitFric = hw_pid::OutLimit(true, -kMaxPidOutFric, kMaxPidOutFric);
 
 const hw_pid::MultiNodesPid::ParamsList kPidParamsYaw = {
@@ -57,18 +59,18 @@ const hw_pid::MultiNodesPid::ParamsList kPidParamsYaw = {
 const hw_pid::MultiNodesPid::ParamsList kPidParamsPitch = {
     {
      .auto_reset = true,
-     .kp = 20,
-     .ki = 0.005,
+     .kp = 1,
+     .ki = 0,
      .kd = 0,
      .setpoint_ramping = hw_pid::SetpointRamping(false, -0.1, 0.1, 0.1),
-     .period_sub = hw_pid::PeriodSub(true, 2 * PI),
+      //  .period_sub = hw_pid::PeriodSub(true, 2 * PI),
      .inte_anti_windup = hw_pid::InteAntiWindup(true, -1.0f, 1.0f),
      .diff_filter = hw_pid::DiffFilter(false, -0.0f, 0.0f, 0.0f),
      .out_limit = hw_pid::OutLimit(true, -30, 30),
      },
     {
      .auto_reset = true,
-     .kp = 1.0,
+     .kp = 10000,
      .ki = 0,
      .kd = 0,
      .setpoint_ramping = hw_pid::SetpointRamping(false, -0.1, 0.1, 0.1),
@@ -77,6 +79,16 @@ const hw_pid::MultiNodesPid::ParamsList kPidParamsPitch = {
      .diff_previous = hw_pid::DiffPrevious(false, 0.5f),
      .out_limit = kOutLimitPitch,
      },
+};
+
+const hw_pid::MultiNodesPid::ParamsList kPidParamsPitchFind0{
+    {
+      .auto_reset = true,
+      .kp = 1,
+      .ki = 0,
+      .kd = 0,
+      .out_limit = kOutLimitPitchFind0,
+    },
 };
 
 // CHANGE 气动没有摩擦轮结构这边注释
@@ -97,6 +109,7 @@ const hw_pid::MultiNodesPid::Type kPidTypeCascade = hw_pid::MultiNodesPid::Type:
 
 hw_pid::MultiNodesPid unique_pid_yaw(kPidTypeCascade, kOutLimitYaw, kPidParamsYaw);
 hw_pid::MultiNodesPid unique_pid_pitch(kPidTypeCascade, kOutLimitPitch, kPidParamsPitch);
+hw_pid::MultiNodesPid unique_pid_pitch_find0(kPidTypeCascade, kOutLimitPitch, kPidParamsPitchFind0);
 
 // CHANGE 气动没有摩擦轮结构这边注释
 // hw_pid::MultiNodesPid unique_pid_fric_left(kPidTypeCascade, kOutLimitFric, kPidParamsFric);
@@ -107,6 +120,7 @@ hw_pid::MultiNodesPid unique_pid_pitch(kPidTypeCascade, kOutLimitPitch, kPidPara
 /* Exported function definitions ---------------------------------------------*/
 hw_pid::MultiNodesPid* CreatePidMotorYaw() { return &unique_pid_yaw; };
 hw_pid::MultiNodesPid* CreatePidMotorPitch() { return &unique_pid_pitch; };
+hw_pid::MultiNodesPid* CreatePidMotorPitchFind0() { return &unique_pid_pitch_find0; };
 
 // CHANGE 气动没有摩擦轮结构这边注释
 // hw_pid::MultiNodesPid* CreatePidMotorFricLeft() { return &unique_pid_fric_left; };

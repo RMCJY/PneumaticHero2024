@@ -288,7 +288,9 @@ static void GimbalFsmInit(void)
 
   gimbal_fsm_ptr->registerPid(CreatePidMotorYaw(), GimbalFsm::kPidIdxYaw);
   gimbal_fsm_ptr->registerPid(CreatePidMotorPitch(), GimbalFsm::kPidIdxPitch);
-
+  // CHANGE 增加寻找丝杆机械零点时需要使用到的单速度环PID
+  gimbal_fsm_ptr->registerPid(CreatePidMotorPitchFind0(), GimbalFsm::kPidIdxPitchFind0);
+  
   // 无通信功能的组件指针
   gimbal_fsm_ptr->registerOfflineChecker(CreateOcMotorYaw(), GimbalFsm::kOCIMotorYaw);
   gimbal_fsm_ptr->registerOfflineChecker(CreateOcMotorPitch(), GimbalFsm::kOCIMotorPitch);

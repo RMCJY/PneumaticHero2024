@@ -27,6 +27,7 @@ namespace hw_pid = hello_world::pid;
 /* Exported function prototypes ----------------------------------------------*/
 hw_pid::MultiNodesPid* CreatePidMotorYaw();
 hw_pid::MultiNodesPid* CreatePidMotorPitch();
+hw_pid::MultiNodesPid* CreatePidMotorPitchFind0();
 
 // CHANGE 气动没有摩擦轮结构这边注释
 // hw_pid::MultiNodesPid* CreatePidMotorFricLeft();

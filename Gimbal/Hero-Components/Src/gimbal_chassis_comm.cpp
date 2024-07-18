@@ -17,6 +17,7 @@
 
 #include <cstring>
 /* Private macro -------------------------------------------------------------*/
+
 namespace hero
 {
 /* Private constants ---------------------------------------------------------*/
@@ -54,8 +55,8 @@ struct __attribute__((packed)) Gimbal2ChassisPkg1 {
   
   // CHANGE 通过gimbal沟通chassis和shooter，需要反馈shooter的状态
   // uint8_t main_board_gimbal_work_state : 2;
-  uint8_t main_board_gimbal_work_state : 1;
-  uint8_t main_board_shooter_work_state : 1;
+  uint8_t main_board_gimbal_work_state : 2;
+  uint8_t main_board_shooter_work_state : 2;
 
   // CHANGE 气动没有摩擦轮结构，在此修改适配气动发射结构
   // uint8_t shooter_is_fric_ready : 1;

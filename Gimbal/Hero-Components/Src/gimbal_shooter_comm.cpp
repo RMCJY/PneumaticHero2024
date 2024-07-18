@@ -5,8 +5,8 @@
 namespace hero
 {
   struct __attribute__((packed)) Gimbal2ShooterPkg{
-    uint8_t is_rfr_shooter_power_on;
     uint8_t shoot_signal;
+    uint8_t is_rfr_shooter_power_on;
     uint8_t bullet_speed_fdb_uint_8;
     uint8_t bullet_speed_ref_uint_8;
   };

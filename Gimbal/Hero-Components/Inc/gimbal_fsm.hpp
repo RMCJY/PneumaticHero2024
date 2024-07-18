@@ -122,6 +122,7 @@ class GimbalFsm : public hello_world::MemMgr
   enum PidIdx : uint8_t {
     kPidIdxYaw,
     kPidIdxPitch,
+    kPidIdxPitchFind0,    ///< 零位设定
     kPidNum,
   };
 
@@ -188,6 +189,10 @@ class GimbalFsm : public hello_world::MemMgr
   void calcGimbalAngleRef();
   void calcGimbalMotorInput();
 
+  // CHANGE 复活模式下寻找机械零点的函数
+  void calcPitchFind0MotorInput();
+  void getPitchState();
+
   // 工具函数
   uint32_t getCurrentTick() const { return hello_world::tick::GetTickMs(); };
   Cmd setCmdSmoothly(const Cmd &cmd, const Cmd &last_cmd, float beta = 0.9);
@@ -208,6 +213,13 @@ class GimbalFsm : public hello_world::MemMgr
   float joint_vel_fdb_[2] = {0};  ///< 关节速度反馈，基于关节空间
   Cmd last_joint_ang_ref_ = {0};  ///< 上一次控制指令, 基于关节空间
   Cmd joint_ref_ = {0};           ///< 控制指令，yaw轴基于力矩，pitch轴基于原始报文
+
+  // CHANGE机械零点寻找
+  bool is_pitch_0_finded_ = false;
+  uint32_t pitch_stuck_duration = 0;
+  float pitch_find0_speed_ref = 0;  ///< 丝杆电机上升速度指令
+  float pitch_find0_speed_fdb = 0;  ///< 丝杆电机上升速度反馈值
+  float pitch_find0_raw_input = 0;  ///< 控制指令，基于原始报文
 
   // 从底盘拿到的数据
   bool is_chassis_board_ready_ = false;  ///< 底盘是否就绪
