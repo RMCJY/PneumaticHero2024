@@ -59,19 +59,19 @@ const hw_pid::MultiNodesPid::ParamsList kPidParamsYaw = {
 const hw_pid::MultiNodesPid::ParamsList kPidParamsPitch = {
     {
      .auto_reset = true,
-     .kp = 1,
-     .ki = 0,
+     .kp = 60,
+     .ki = 3,
      .kd = 0,
      .setpoint_ramping = hw_pid::SetpointRamping(false, -0.1, 0.1, 0.1),
-      //  .period_sub = hw_pid::PeriodSub(true, 2 * PI),
+     //  .period_sub = hw_pid::PeriodSub(true, 2 * PI),
      .inte_anti_windup = hw_pid::InteAntiWindup(true, -1.0f, 1.0f),
      .diff_filter = hw_pid::DiffFilter(false, -0.0f, 0.0f, 0.0f),
-     .out_limit = hw_pid::OutLimit(true, -30, 30),
+     .out_limit = hw_pid::OutLimit(true, -150, 150),
      },
     {
      .auto_reset = true,
-     .kp = 10000,
-     .ki = 0,
+     .kp = 180,
+     .ki = 5,
      .kd = 0,
      .setpoint_ramping = hw_pid::SetpointRamping(false, -0.1, 0.1, 0.1),
      .period_sub = hw_pid::PeriodSub(false, 0),
@@ -83,12 +83,15 @@ const hw_pid::MultiNodesPid::ParamsList kPidParamsPitch = {
 
 const hw_pid::MultiNodesPid::ParamsList kPidParamsPitchFind0{
     {
-      .auto_reset = true,
-      .kp = 1,
-      .ki = 0,
-      .kd = 0,
-      .out_limit = kOutLimitPitchFind0,
-    },
+     .auto_reset = true,
+     .kp = 180,
+     .ki = 5,
+     .kd = 0,
+     .dead_band = hw_pid::DeadBand(false,-0.001f,0.001f),
+     .inte_anti_windup = hw_pid::InteAntiWindup(true, -2000, 3000),
+     .out_limit = kOutLimitPitchFind0,
+
+     },
 };
 
 // CHANGE 气动没有摩擦轮结构这边注释

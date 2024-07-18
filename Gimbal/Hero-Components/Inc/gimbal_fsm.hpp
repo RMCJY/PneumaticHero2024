@@ -36,6 +36,7 @@ namespace hw_laser = hello_world::laser;
 namespace hw_filter = hello_world::filter;
 
 /* Exported macro ------------------------------------------------------------*/
+
 namespace hero
 {
 /* Exported constants --------------------------------------------------------*/
@@ -188,10 +189,14 @@ class GimbalFsm : public hello_world::MemMgr
   // void changeWorkingMode();
   void calcGimbalAngleRef();
   void calcGimbalMotorInput();
+  void calcPitchAngleFdbMotor();
 
   // CHANGE 复活模式下寻找机械零点的函数
   void calcPitchFind0MotorInput();
-  void getPitchState();
+  void getPitchStuckState();
+
+  // CHANGE 复活模式下完成机械零点寻找后回到水平状态的函数
+  void calcPitchResetInput();
 
   // 工具函数
   uint32_t getCurrentTick() const { return hello_world::tick::GetTickMs(); };
@@ -214,12 +219,15 @@ class GimbalFsm : public hello_world::MemMgr
   Cmd last_joint_ang_ref_ = {0};  ///< 上一次控制指令, 基于关节空间
   Cmd joint_ref_ = {0};           ///< 控制指令，yaw轴基于力矩，pitch轴基于原始报文
 
-  // CHANGE机械零点寻找
+  // CHANGE 机械零点寻找
   bool is_pitch_0_finded_ = false;
   uint32_t pitch_stuck_duration = 0;
   float pitch_find0_speed_ref = 0;  ///< 丝杆电机上升速度指令
   float pitch_find0_speed_fdb = 0;  ///< 丝杆电机上升速度反馈值
   float pitch_find0_raw_input = 0;  ///< 控制指令，基于原始报文
+
+  // CHANGE 机械零点寻找到后回到水平状态
+  bool is_pitch_reset_ = false;
 
   // 从底盘拿到的数据
   bool is_chassis_board_ready_ = false;  ///< 底盘是否就绪

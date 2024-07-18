@@ -312,7 +312,8 @@ void MainFsm::sendPitchData()
   unsigned int len = 8;
   uint8_t tx_data[8] = {0};
   motor_ptr_[kMotorIdxPitch]->encode(tx_data, &len);
-  SendCanData(&hcan2, motor_ptr_[kMotorIdxPitch]->txId(), tx_data);
+  // TODO：暂时将pitch轴电机从CANA2移动到CAN1上，后续需要修改回来
+  SendCanData(&hcan1, motor_ptr_[kMotorIdxPitch]->txId(), tx_data);
 }
 
 // CHANGE 气动没有摩擦轮结构这边注释

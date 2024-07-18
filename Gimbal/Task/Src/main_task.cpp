@@ -143,11 +143,21 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef* hcan)
         oc_gimbal_chassis_comm_ptr->update();
       }
     }
+  }
+    // HW_ASSERT(motor_yaw_ptr != nullptr, "Motor is nullptr", motor_yaw_ptr);
+    // HW_ASSERT(oc_yaw_ptr != nullptr, "OfflineChecker is nullptr", oc_yaw_ptr);
+    // if (motor_yaw_ptr->decode(rx_data, rx_header.StdId) == hw_motor::kStateOk) {
+    //   oc_yaw_ptr->update();
+    // }
 
-    HW_ASSERT(motor_yaw_ptr != nullptr, "Motor is nullptr", motor_yaw_ptr);
-    HW_ASSERT(oc_yaw_ptr != nullptr, "OfflineChecker is nullptr", oc_yaw_ptr);
-    if (motor_yaw_ptr->decode(rx_data, rx_header.StdId) == hw_motor::kStateOk) {
-      oc_yaw_ptr->update();
+  if(rx_header.StdId == motor_pitch_ptr->rxId())
+  {
+    // CHANGE 暂时将Pitch轴电机从CAN2移动到CAN1上
+    size_t len = 8;
+    HW_ASSERT(motor_pitch_ptr != nullptr, "Motor is nullptr", motor_pitch_ptr);
+    HW_ASSERT(oc_pitch_ptr != nullptr, "OfflineChecker is nullptr", oc_pitch_ptr);
+    if (motor_pitch_ptr->decode(rx_data, len) == true) {
+      oc_pitch_ptr->update();
     }
   }
   HAL_CAN_ActivateNotification(hcan, CAN_IT_RX_FIFO0_MSG_PENDING);
@@ -169,11 +179,6 @@ void HAL_CAN_RxFifo1MsgPendingCallback(CAN_HandleTypeDef* hcan)
   if (hcan == &hcan2) {
     HAL_CAN_GetRxMessage(hcan, CAN_RX_FIFO1, &rx_header, rx_data);
 
-    HW_ASSERT(motor_pitch_ptr != nullptr, "Motor is nullptr", motor_pitch_ptr);
-    HW_ASSERT(oc_pitch_ptr != nullptr, "OfflineChecker is nullptr", oc_pitch_ptr);
-    if (motor_pitch_ptr->decode(rx_data, rx_header.StdId) == hw_motor::kStateOk) {
-      oc_pitch_ptr->update();
-    }
 
     // CHANGE 气动没有摩擦轮结构这边注释
     // HW_ASSERT(motor_fric_left_ptr != nullptr, "Motor is nullptr", motor_fric_left_ptr);

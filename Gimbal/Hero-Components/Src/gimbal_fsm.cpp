@@ -15,17 +15,32 @@
 /* Includes ------------------------------------------------------------------*/
 #include "gimbal_fsm.hpp"
 /* Private macro -------------------------------------------------------------*/
+// TODO：调试时观察参数使用，后续记得注释掉
+float ref = 0;
+float fdb = 0;
+float input = 0;
+float ang_fdb = 0;
+float max = 0;
+float min = 0;
+
+float c = 0;
 namespace hero
 {
 /* Private constants ---------------------------------------------------------*/
 
-// CHANGE 气动pitch的最大角度为0.67，但是如果降到过低位置电机又不小心疯了可能会导致丝杆卡住的问题，所以这里稍微给的保守了一点
-const float kMaxPitchAngle = 0.64;  ///< Pitch轴最大角度，单位 rad
+const float kMaxPitchAngle = 0.221;  ///< Pitch轴最大角度，单位 rad
 
-const float kMinPitchAngle = -0.40;  ///< Pitch轴最小角度，单位 rad
+const float kMinPitchAngle = -0.823;  ///< Pitch轴最小角度，单位 rad
 
 const float kMaxSensitivity = 600 / 1000.0 * PI / 180.0;  ///< 云台运动最大灵敏度，rad/ms
 
+const float a = 170;                    ///< 云台旋转中心到丝杆螺母距离，单位：mm
+
+const float b = 186.23;                 ///< 云台旋转中心到丝杆底端旋转中心距离，单位：mm
+
+const float l = 245.0;                 ///< 丝杆顶端限位到丝杆底端旋转中心距离，单位：mm (董老板说这个误差会大一些)
+
+const float lamda = 39.51 / 180 * PI;   ///< 云台旋转中心与丝杆底端旋转中心连线与水平方向夹角，单位：rad  0.6896
 /* Private types -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
 /* External variables --------------------------------------------------------*/
@@ -77,13 +92,24 @@ void GimbalFsm::updateMotor()
       is_all_motor_ready = false;
     } else {
       is_any_motor_ready = true;
-      joint_ang_fdb_motor_[motor_idx] = motor_ptr->angle();
+
+      if(motor_idx == kMotorIdxPitch)
+      {
+        //CHANGE pitch轴丝杆的位移映射到角度
+        calcPitchAngleFdbMotor();
+      }
+      else
+      {
+        joint_ang_fdb_motor_[motor_idx] = motor_ptr->angle();
+      }
       // joint_spd_fdb_motor_[joint_idx] = motor_ptr->vel();
       // 达妙速度反馈噪声大，使用td滤波计算速度
-      // TODO：3508速度反馈的噪声怎么样，需要使用td滤波吗？
+      // TODO：3508速度反馈的噪声怎么样，需要使用td滤波吗？用了滤波感觉很怪，所以暂时不用td滤波
       motor_spd_td_ptr_[motor_idx]->calc(&joint_ang_fdb_motor_[motor_idx], &joint_spd_fdb_motor_[motor_idx]);
+
     }
-    pitch_find0_speed_fdb = joint_spd_fdb_motor_[kMotorIdxPitch];
+    // pitch_find0_speed_fdb = joint_spd_fdb_motor_[kMotorIdxPitch];
+    pitch_find0_speed_fdb = motor_ptr_[kMotorIdxPitch]->vel();
   }
   is_any_motor_ready_ = is_any_motor_ready;
   is_all_motor_ready_ = is_all_motor_ready;
@@ -92,14 +118,14 @@ void GimbalFsm::updateMotor()
 void GimbalFsm::updateIMU()
 {
   HW_ASSERT(imu_ptr_ != nullptr, "pointer %d to imu %d is nullptr", imu_ptr_);
-  // TODO(ZSC): 之后需要检查此处的数据映射
+  // CHANGE 气动的C板是横着装的
   joint_ang_fdb_imu_[JointIdx::kJointIdxYaw] = imu_ptr_->getAngYaw();
-  joint_ang_fdb_imu_[JointIdx::kJointIdxPitch] = -imu_ptr_->getAngPitch();
-  joint_ang_fdb_imu_[JointIdx::kJointIdxRoll] = imu_ptr_->getAngRoll();
+  joint_ang_fdb_imu_[JointIdx::kJointIdxPitch] = imu_ptr_->getAngRoll();
+  joint_ang_fdb_imu_[JointIdx::kJointIdxRoll] = -imu_ptr_->getAngPitch();
 
   joint_spd_fdb_imu_[JointIdx::kJointIdxYaw] = imu_ptr_->getGyroYaw();
-  joint_spd_fdb_imu_[JointIdx::kJointIdxPitch] = -imu_ptr_->getGyroPitch();
-  joint_spd_fdb_imu_[JointIdx::kJointIdxRoll] = imu_ptr_->getGyroRoll();
+  joint_spd_fdb_imu_[JointIdx::kJointIdxPitch] = imu_ptr_->getGyroRoll();
+  joint_spd_fdb_imu_[JointIdx::kJointIdxRoll] = -imu_ptr_->getGyroPitch();
 };
 void GimbalFsm::updateVision()
 {
@@ -158,7 +184,7 @@ GimbalFsm::WorkState GimbalFsm::updateWorkState()
     // CHANGE 底盘在线时，云台工作状态与底盘保持一直，但是在从复活状态切换到工作状态的时候需要在完成零点寻找的前提下
     if((WorkState)(gc_comm_ptr_->gimbal_data().work_state == kWorking))
     {
-      if(is_pitch_0_finded_ ==false)
+      if(is_pitch_0_finded_ == false)
       {
         return WorkState::kResurrection;
       }
@@ -205,8 +231,15 @@ void GimbalFsm::runOnResurrection()
   laser_ptr_->disable();
 
   // CHANGE 寻找机械零点
-  getPitchState();
-  calcPitchFind0MotorInput();
+  if(is_pitch_0_finded_ == false)
+  {
+    getPitchStuckState();
+    calcPitchFind0MotorInput();
+  }
+  else if(is_pitch_reset_ == false)
+  {
+    // calcPitchResetInput();
+  }
 
   resetDataOnResurrection();
   setCommDataOnResurrection();
@@ -227,9 +260,9 @@ void GimbalFsm::runOnWorking()
 };
 
 // CHANGE 寻找机械零点，判断丝杆电机状态
-void GimbalFsm::getPitchState()
+void GimbalFsm::getPitchStuckState()
 {
-  float thre = 0.5 * fabs(pitch_find0_speed_ref);   // TODO：阈值可能还需要改
+  float thre = 0.3 * pitch_find0_speed_ref;   // TODO：阈值可能还需要改
   if(fabs(pitch_find0_speed_fdb - pitch_find0_speed_ref) < thre)
   {
     is_pitch_0_finded_ = false;
@@ -238,9 +271,9 @@ void GimbalFsm::getPitchState()
   else 
   {
     pitch_stuck_duration++;
-    if(pitch_stuck_duration > 500)
+    if(pitch_stuck_duration > 1000)
     {
-      // 转速0.5s内没有达到期望值，认为丝杆电机堵转，找到机械零点
+      // 转速1s内没有达到期望值，认为丝杆电机堵转，找到机械零点
       is_pitch_0_finded_ = true;
       motor_ptr_[kMotorIdxPitch]->setAngleValue(0);
     }
@@ -251,9 +284,20 @@ void GimbalFsm::getPitchState()
 void GimbalFsm::calcPitchFind0MotorInput()
 {
   // TODO：寻找机械零点的丝杆上升速度暂时是随便设的，后续可能需要修改
-  pitch_find0_speed_ref = 3.0;
+  pitch_find0_speed_ref = 150.0;
+  float ffd = 1500;
   HW_ASSERT(pid_ptr_[kPidIdxPitchFind0] != nullptr, "pointer to Gimbal PID is nullptr", kPidIdxPitchFind0);
-  pid_ptr_[kPidIdxPitchFind0]->calc(&pitch_find0_speed_ref, &pitch_find0_speed_fdb, nullptr, &pitch_find0_raw_input);
+  pid_ptr_[kPidIdxPitchFind0]->calc(&pitch_find0_speed_ref, &pitch_find0_speed_fdb, &ffd, &pitch_find0_raw_input);
+  // TODO：调试时查看曲线的时候使用
+  // ref = pitch_find0_speed_ref;
+  // fdb = pitch_find0_speed_fdb;
+  // input = pitch_find0_raw_input;
+}
+
+
+void GimbalFsm::calcPitchResetInput()
+{
+
 }
 
 void GimbalFsm::calcGimbalAngleRef()
@@ -263,9 +307,7 @@ void GimbalFsm::calcGimbalAngleRef()
     // 如果工作模式发生变化，从反馈值更新上一控制周期的关节角度参考值
     if (working_mode_ == WorkingMode::kGimbalFarshootMode) {
       last_joint_ang_ref_.yaw = joint_ang_fdb_motor_[JointIdx::kJointIdxYaw];
-      // CHANGE 3508+丝杆控制pitch轴，电机反馈的角度没有意义
-      // last_joint_ang_ref_.pitch = joint_ang_fdb_motor_[JointIdx::kJointIdxPitch];
-      last_joint_ang_ref_.pitch = joint_ang_fdb_imu_[JointIdx::kJointIdxPitch];
+      last_joint_ang_ref_.pitch = joint_ang_fdb_motor_[JointIdx::kJointIdxPitch];
     } else {
       last_joint_ang_ref_.yaw = joint_ang_fdb_imu_[JointIdx::kJointIdxYaw];
       last_joint_ang_ref_.pitch = joint_ang_fdb_imu_[JointIdx::kJointIdxPitch];
@@ -307,18 +349,17 @@ void GimbalFsm::calcGimbalAngleRef()
   }
 
   if (working_mode_ == WorkingMode::kGimbalFarshootMode) {
-    // 吊射模式下，Pitch轴限位
+    // 吊射模式下，Pitch轴限位，基于电机反馈
     joint_ang_ref_.pitch = hello_world::Bound(joint_ang_ref_.pitch, kMaxPitchAngle, kMinPitchAngle);
   } else if (working_mode_ == WorkingMode::kGimbalNormalMode) {
-    // 正常模式下，Pitch轴限位
+    // 正常模式下，Pitch轴限位，基于IMU反馈
     // {fdb}_{imu} - {lim}_{imu} = {fdb}_{motor} - {lim}_{motor}
     // {lim}_{imu} = {lim}_{motor} + {fdb}_{imu} - {fdb}_{motor}
 
-    // CHANGE 气动使用3508+丝杆控制pitch轴，电机反馈角度没有意义。
-    // TODO：需要记录圈数确定丝杆行径的里程&角度，等效为下面的电机角度
-    // float motor_imu_delta = joint_ang_fdb_imu_[JointIdx::kJointIdxPitch] - joint_ang_fdb_motor_[JointIdx::kJointIdxPitch];
-    // joint_ang_ref_.pitch = hello_world::Bound(joint_ang_ref_.pitch, kMaxPitchAngle + motor_imu_delta, kMinPitchAngle + motor_imu_delta);
-    joint_ang_ref_.pitch = hello_world::Bound(joint_ang_ref_.pitch, kMaxPitchAngle, kMinPitchAngle);
+    float motor_imu_delta = joint_ang_fdb_imu_[JointIdx::kJointIdxPitch] - joint_ang_fdb_motor_[JointIdx::kJointIdxPitch];
+    joint_ang_ref_.pitch = hello_world::Bound(joint_ang_ref_.pitch, kMaxPitchAngle + motor_imu_delta, kMinPitchAngle + motor_imu_delta);
+    max = kMaxPitchAngle + motor_imu_delta;
+    min = kMinPitchAngle + motor_imu_delta;
   } else {
     HW_ASSERT(false, "unknown working mode %d", working_mode_);
   }
@@ -330,21 +371,13 @@ void GimbalFsm::calcGimbalMotorInput()
 
   JointIdx joint_idxs[2] = {JointIdx::kJointIdxYaw, JointIdx::kJointIdxPitch};
   if (working_mode_ == WorkingMode::kGimbalFarshootMode) {
-    // // 吊射模式下，反馈值来自电机
-    // for (size_t i = 0; i < 2; i++) {
-    //   JointIdx joint_idx = joint_idxs[i];
-    //   joint_ang_fdb_[joint_idx] = joint_ang_fdb_motor_[joint_idx];
-    //   joint_vel_fdb_[joint_idx] = joint_spd_fdb_imu_[joint_idx];
+    // 吊射模式下，反馈值来自电机
+    for (size_t i = 0; i < 2; i++) {
+      JointIdx joint_idx = joint_idxs[i];
+      joint_ang_fdb_[joint_idx] = joint_ang_fdb_motor_[joint_idx];
+      joint_vel_fdb_[joint_idx] = joint_spd_fdb_imu_[joint_idx];
+    }
 
-    // CHANGE 吊射模式下，pitch反馈值也是来IMU，丝杆有自锁的特性，到达设定值后，发0即可
-    // TODO：为什么吊射模式下反馈来自电机？有必要将pitch轴的反馈修改为累计3508圈数计算得到的吗
-    JointIdx joint_idx = joint_idxs[1];
-    joint_ang_fdb_[joint_idx] = joint_ang_fdb_motor_[joint_idx];
-    joint_vel_fdb_[joint_idx] = joint_spd_fdb_imu_[joint_idx];
-    
-    joint_idx = joint_idxs[2];
-    joint_ang_fdb_[joint_idx] = joint_ang_fdb_imu_[joint_idx];
-    joint_vel_fdb_[joint_idx] = joint_spd_fdb_imu_[joint_idx];
   } 
   else if (working_mode_ == WorkingMode::kGimbalNormalMode) {
     // 正常模式下，反馈值来自IMU
@@ -372,6 +405,20 @@ void GimbalFsm::calcGimbalMotorInput()
   MultiNodesPid &pid_pitch = *pid_ptr_[kPidIdxPitch];
   pid_ref[0] = joint_ang_ref_.pitch;
   pid_pitch.calc(pid_ref, pitch_fdb, nullptr, &joint_ref_.pitch);
+
+  joint_ref_.pitch *= -1.0;
+  
+  ref = joint_ang_ref_.pitch;
+  fdb = pitch_fdb[0];
+  input = joint_ref_.pitch;
+}
+
+void GimbalFsm::calcPitchAngleFdbMotor()
+{
+  c = l + motor_ptr_[kMotorIdxPitch]->angle();
+  float phi = acosf((a * a + b * b - c * c) / (2.0 * a * b));
+  joint_ang_fdb_motor_[kMotorIdxPitch] = lamda - phi;
+  ang_fdb = lamda - phi;
 }
 
 #pragma endregion

@@ -51,7 +51,7 @@ const hw_motor::OptionalParams kMotorParamsPitch = {
     /** 电机输出端实际角度与规定角度的差值 */
     .angle_offset = 0,
     /** 电机外置减速器的减速比（额外） */
-    .ex_redu_rat = 1,
+    .ex_redu_rat = 2.0 * PI / 5.0,        // 电机旋转角度映射为丝杆运动过的里程
 };
 
 // CHANGE 气动没有摩擦轮结构这边注释
@@ -80,7 +80,7 @@ enum MotorID {
 //   kMotorIdFricRight = 1u,
 //   kMotorIdFricLeft = 2u,
   kMotorIdYaw = 3u,
-  kMotorIdPitch = 4u,
+  kMotorIdPitch = 1u,
 };
 /* Private macro -------------------------------------------------------------*/
 /* Private types -------------------------------------------------------------*/
