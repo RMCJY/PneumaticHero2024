@@ -1,3 +1,7 @@
 [submodule "Shooter/HW-Components"]
 	path = Shooter/HW-Components
 	url = https://github.com/ZJU-HelloWorld/HW-Components.git
+[submodule "Gimbal/HW-Components"]
+	path = Gimbal/HW-Components
+	url = https://github.com/ZJU-HelloWorld/HW-Components.git
+	branch = cpp24
