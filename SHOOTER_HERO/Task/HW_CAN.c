@@ -13,6 +13,7 @@
 #include "gimbal_shooter_comm.h"
 #include "shooter.h"
 
+
 /* ------------------------------ Function Definition ------------------------------ */
 /**
 * @brief  can filter的初始化，直接抄的官方代码
@@ -55,17 +56,29 @@ void CanFilter_Init(CAN_HandleTypeDef* hcan_init) {
 CAN_RxHeaderTypeDef  RxMessageHeader = {0}; 
 static int times = 0;
 uint8_t RxData[8];
+uint8_t rawData[8];
+uint8_t signal = 0;
 void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef* hcan_rx)
 {
-	uint8_t rawData[8];
     if(hcan_rx == &hcan)
     {
 		if (HAL_CAN_GetRxMessage(hcan_rx, CAN_RX_FIFO0, &RxMessageHeader, rawData) == HAL_OK)		// 获得接收到的数据头和数据
 		{
-
-            if(RxMessageHeader.StdId == GIMBAL_BASEADDR)
+            if(RxMessageHeader.StdId == GIMBAL_ADDR)
             {
                 decodeG2S(rawData);
+                if(rawData[0] == 1)
+                {
+                    signal++;
+                }
+                if(shooter.shooter_signal == 1 || shooter.is_shooter_ready == SHOOTER_ACTIVED)
+                {
+                    HAL_GPIO_WritePin(LED4_GPIO_Port,LED4_Pin,RESET);
+                }
+                else
+                {
+                    HAL_GPIO_WritePin(LED4_GPIO_Port,LED4_Pin,SET);
+                }
             }
         }
     }

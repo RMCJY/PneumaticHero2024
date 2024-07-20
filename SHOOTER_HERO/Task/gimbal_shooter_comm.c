@@ -3,7 +3,7 @@
 #include "shooter.h"
 #include "gimbal_shooter_comm.h"
 
-// TODO：修改为裁判系统捷报的那种形式，反馈信息需要更加完整
+// TODO：修改为裁判系统的那种形式，反馈信息需要更加完整
 void ShooterGimbalComm(void)
 {
     uint8_t tx_data[8] = {0};
@@ -27,4 +27,5 @@ void encodeS2G(uint8_t tx_data[8])
     tx_data[3] = shooter.work_state;
     tx_data[4] = shooter.is_air_bottle_ready;
     tx_data[5] = shooter.is_airpre_ready;
+    tx_data[6] = shooter.airpre;
 }

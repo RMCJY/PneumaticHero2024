@@ -73,6 +73,7 @@ typedef struct
     uint8_t work_state;             // 发射状态
     uint8_t is_air_bottle_ready;    // 气瓶是否准备好，不处于欠压状态
     uint8_t is_airpre_ready;        // 气压是否到达设定值
+    uint8_t airpre;
 
     // gimbal to shooter
     uint8_t is_rfr_shooter_power_on;// 从裁判系统读取发射机构是否上电

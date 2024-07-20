@@ -3,7 +3,7 @@
 
 #include "main.h"
 
-#define SHOOTER_SEND_ID 0x1ff
+#define SHOOTER_SEND_ID 0x10f
 
 void ShooterGimbalComm(void);
 void decodeG2S(uint8_t rx_data[8]);

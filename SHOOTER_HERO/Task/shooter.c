@@ -5,7 +5,7 @@
 #include "main_task.h"
 #include "pid.h"
 #include "proportional_valve.h"
-#include "iwdg.h"
+// #include "iwdg.h"
 
 Shooter_t shooter;
 
@@ -15,12 +15,12 @@ void GetPhotogateState(void)
     if(HAL_GPIO_ReadPin(Photogate_GPIO_Port, Photogate_Pin))
     {
         shooter.phtogate_state = PHOTOGATE_COVER;
-        HAL_GPIO_WritePin(LED3_GPIO_Port,LED4_Pin,RESET);
+        HAL_GPIO_WritePin(LED3_GPIO_Port,LED3_Pin,RESET);
     }
     else
     {
         shooter.phtogate_state = PHOTOGATE_EMPTY;
-        HAL_GPIO_WritePin(LED3_GPIO_Port,LED4_Pin,SET);
+        HAL_GPIO_WritePin(LED3_GPIO_Port,LED3_Pin,SET);
     }
 }
 
@@ -161,7 +161,7 @@ void ShooterOnFinish(void)
 
     // 强行将发射命令设置为空闲，防止连发或者状态更新错误
     // TODO：不确定下面这句话会不会导致当连续下发指令的时候，会丢失一些时间间隔过短的指令，后续需要修改
-    shooter.shooter_signal = SHOOTER_COMMAND_IDLE;
+    // shooter.shooter_signal = SHOOTER_COMMAND_IDLE;
 
     shooter.work_state = SHOOTER_WORK_STATE_IDLE;
 
@@ -207,28 +207,25 @@ void GetShooterClearNote(void)
     }
 }
 
+uint32_t time_tick = 0;
 void ShooterTask(void)
 {
-    HAL_IWDG_Refresh(&hiwdg);
+    // HAL_IWDG_Refresh(&hiwdg);
     GetPhotogateState();
     GetProportionalValveState();
     AirPressureControl();
     JudgeAirBottleState();
     GetShooterClearNote();
-
+    time_tick++;
     // 只有在气瓶正常/气压达到设定值/发射机构上电的情况下才能进入发射状态
-    if(shooter.is_air_bottle_ready && shooter.is_airpre_ready && shooter.is_rfr_shooter_power_on )
+    // if(shooter.is_air_bottle_ready && shooter.is_airpre_ready && shooter.is_rfr_shooter_power_on )
+    if(shooter.is_air_bottle_ready && shooter.is_airpre_ready)
     {
         // 收到发射指令，保证每个发射周期的完整，防止卡弹
         if(shooter.shooter_signal == SHOOTER_COMMAND_ACTIVE || shooter.work_state != SHOOTER_WORK_STATE_IDLE)
         {
             ShootOnWorkState(shooter.work_state); 
         }
-    }
-
-    if(shooter.is_rfr_shooter_power_on == SHOOTER_RFR_POWER_OFF)
-    {
-        ShooterInit();
     }
 }
 
@@ -242,7 +239,7 @@ void ShooterInit(void)
     shooter.valve23_wait_time = 0;
     shooter.valve25_wait_time = 0;
     shooter.proportional_valve_fdb = 0;
-    shooter.proportional_valve_ref = 2;
+    shooter.proportional_valve_ref = 2.5;
 
     // shooter to gimbal
     shooter.is_shooter_ready = SHOOTER_IDLE;

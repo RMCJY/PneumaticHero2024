@@ -15,7 +15,7 @@
 #include "main_task.h"
 
 /* ------------------------------ Macro Definition ------------------------------ */
-#define GIMBAL_BASEADDR 0x1f0
+#define GIMBAL_ADDR 0x100
 #define SPEED_ADRR      0x1f1       // 仅测试使用，用于查看弹速
 
 /* ------------------------------ Function Declaration ------------------------------ */
